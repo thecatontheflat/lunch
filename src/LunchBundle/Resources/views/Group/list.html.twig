@@ -11,8 +11,14 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-12">
-
+        <div class="col-lg-6">
+            {% for group in groups %}
+                <ul class="list-group">
+                    {% for participant in group %}
+                        <li class="list-group-item">{{ participant.email }}</li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
