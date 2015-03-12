@@ -1,6 +1,6 @@
-lunch_homepage:
-    path:     /{name}
-    defaults: { _controller: LunchBundle:Default:index }
+dashboard:
+    path:     /
+    defaults: { _controller: LunchBundle:Dashboard:index }
 
 participant_create:
     path:     /user/create
