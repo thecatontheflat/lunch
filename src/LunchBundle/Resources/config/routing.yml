@@ -1,3 +1,15 @@
 lunch_homepage:
     path:     /{name}
     defaults: { _controller: LunchBundle:Default:index }
+
+user_create:
+    path:     /user/create
+    defaults: { _controller: LunchBundle:User:create }
+
+user_delete:
+    path:     /user/delete
+    defaults: { _controller: LunchBundle:User:delete }
+
+user_list:
+    path:     /user/list
+    defaults: { _controller: LunchBundle:User:list }
