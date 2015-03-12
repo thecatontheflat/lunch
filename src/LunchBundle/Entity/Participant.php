@@ -28,6 +28,12 @@ class Participant
      */
     private $email;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="LunchGroup", inversedBy="participants")
+     * @ORM\JoinColumn(name="lunch_group_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    protected $lunchGroup;
+
 
     /**
      * Get id
@@ -60,5 +66,28 @@ class Participant
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Set lunchGroup
+     *
+     * @param LunchGroup $lunchGroup
+     * @return Participant
+     */
+    public function setLunchGroup(LunchGroup $lunchGroup = null)
+    {
+        $this->lunchGroup = $lunchGroup;
+
+        return $this;
+    }
+
+    /**
+     * Get lunchGroup
+     *
+     * @return LunchGroup
+     */
+    public function getLunchGroup()
+    {
+        return $this->lunchGroup;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace LunchBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +22,15 @@ class LunchGroup
      */
     private $id;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Participant", mappedBy="lunchGroup")
+     */
+    protected $participants;
+
+    public function __construct()
+    {
+        $this->participants = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -30,5 +40,40 @@ class LunchGroup
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Add participants
+     *
+     * @param \LunchBundle\Entity\Participant $participant
+     * @return LunchGroup
+     */
+    public function addParticipant(Participant $participant)
+    {
+        $participant->setLunchGroup($this);
+
+        $this->participants[] = $participant;
+
+        return $this;
+    }
+
+    /**
+     * Remove participants
+     *
+     * @param \LunchBundle\Entity\Participant $participants
+     */
+    public function removeParticipant(Participant $participants)
+    {
+        $this->participants->removeElement($participants);
+    }
+
+    /**
+     * Get participants
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getParticipants()
+    {
+        return $this->participants;
     }
 }

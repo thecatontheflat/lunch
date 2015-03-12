@@ -12,9 +12,12 @@
 
     <div class="row">
         <div class="col-lg-6">
+            <a href="{{ url('group_generate') }}" class="btn btn-warning">Regenerate</a>
+        </div>
+        <div class="col-lg-6">
             {% for group in groups %}
                 <ul class="list-group">
-                    {% for participant in group %}
+                    {% for participant in group.participants %}
                         <li class="list-group-item">{{ participant.email }}</li>
                     {% endfor %}
                 </ul>

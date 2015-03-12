@@ -17,3 +17,7 @@ participant_list:
 group_list:
     path:     /group/list
     defaults: { _controller: LunchBundle:Group:list }
+
+group_generate:
+    path:     /group/generate
+    defaults: { _controller: LunchBundle:Group:generate }
