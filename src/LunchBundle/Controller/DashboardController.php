@@ -8,6 +8,12 @@ class DashboardController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('LunchBundle:Dashboard:index.html.twig');
+        $participants = $this->getDoctrine()
+            ->getRepository('LunchBundle:Participant')
+            ->findAll();
+
+        return $this->render('LunchBundle:Dashboard:index.html.twig', [
+            'participantsAmount' => count($participants)
+        ]);
     }
 }
