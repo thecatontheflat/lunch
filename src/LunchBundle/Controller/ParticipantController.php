@@ -4,12 +4,12 @@ namespace LunchBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class UserController extends Controller
+class ParticipantController extends Controller
 {
     public function createAction()
     {
         return $this->render(
-            'LunchBundle:User:create.html.twig',
+            'LunchBundle:Participant:create.html.twig',
             []
         );
     }
@@ -17,7 +17,7 @@ class UserController extends Controller
     public function deleteAction()
     {
         return $this->render(
-            'LunchBundle:User:delete.html.twig',
+            'LunchBundle:Participant:delete.html.twig',
             []
         );
     }
@@ -25,7 +25,7 @@ class UserController extends Controller
     public function listAction()
     {
         return $this->render(
-            'LunchBundle:User:list.html.twig',
+            'LunchBundle:Participant:list.html.twig',
             []
         );
     }
