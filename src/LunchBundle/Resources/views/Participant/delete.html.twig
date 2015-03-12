@@ -1,7 +1,26 @@
-{% extends "::base.html.twig" %}
+{% extends '@Lunch/layout.html.twig' %}
 
-{% block title %}LunchBundle:User:delete{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Participants
+                <small>Delete</small>
+            </h1>
+        </div>
+    </div>
 
-{% block body %}
-<h1>Welcome to the User:delete page</h1>
+    <div class="row">
+        <div class="col-lg-12">
+            <form role="form" method="post" action="{{ url('participant_delete', {'id': participant.id}) }}">
+
+                <div class="form-group">
+                    <label>Are you sure you want to remove {{ participant.email }}?</label>
+                    <input type="hidden" value="{{ participant.id }}">
+                </div>
+
+                <button type="submit" class="btn btn-danger">Yes, remove</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}

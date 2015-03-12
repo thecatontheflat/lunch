@@ -4,8 +4,8 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Dashboard
-                <small>Statistics Overview</small>
+                Participants
+                <small>List</small>
             </h1>
         </div>
     </div>
@@ -27,13 +27,15 @@
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Participants list</h3>
+                    <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Participants list (click to delete)</h3>
                 </div>
                 <div class="panel-body">
                     <div class="list-group">
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-fw fa-user"></i> vitaliy.zurian@gmail.com
-                        </a>
+                        {% for participant in participants %}
+                            <a href="{{ url('participant_delete', {'id': participant.id}) }}" class="list-group-item">
+                                <i class="fa fa-fw fa-user"></i> {{ participant.email }}
+                            </a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@ participant_create:
     defaults: { _controller: LunchBundle:Participant:create }
 
 participant_delete:
-    path:     /participant/delete
+    path:     /participant/delete/{id}
     defaults: { _controller: LunchBundle:Participant:delete }
 
 participant_list:
