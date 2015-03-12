@@ -13,3 +13,7 @@ participant_delete:
 participant_list:
     path:     /participant/list
     defaults: { _controller: LunchBundle:Participant:list }
+
+group_list:
+    path:     /group/list
+    defaults: { _controller: LunchBundle:Group:list }
