@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Participant
  *
- * @ORM\Table()
+ * @ORM\Table(name="participant")
  * @ORM\Entity(repositoryClass="LunchBundle\Entity\ParticipantRepository")
  */
 class Participant

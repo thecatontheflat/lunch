@@ -3,13 +3,13 @@ dashboard:
     defaults: { _controller: LunchBundle:Dashboard:index }
 
 participant_create:
-    path:     /user/create
+    path:     /participant/create
     defaults: { _controller: LunchBundle:Participant:create }
 
 participant_delete:
-    path:     /user/delete
+    path:     /participant/delete
     defaults: { _controller: LunchBundle:Participant:delete }
 
 participant_list:
-    path:     /user/list
+    path:     /participant/list
     defaults: { _controller: LunchBundle:Participant:list }
