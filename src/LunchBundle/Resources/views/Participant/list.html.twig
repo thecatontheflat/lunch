@@ -4,8 +4,39 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Dashboard <small>Statistics Overview</small>
+                Dashboard
+                <small>Statistics Overview</small>
             </h1>
+        </div>
+    </div>
+
+    {% include '@Lunch/Parts/flash.html.twig' %}
+
+    <div class="row">
+        <div class="col-lg-6">
+            <form role="form" method="post" action="{{ url('participant_create') }}">
+
+                <div class="form-group">
+                    <label>Text Input with Placeholder</label>
+                    <input class="form-control" placeholder="vitalii.zurian@zencap.de" name="email" type="email">
+                </div>
+
+                <button type="submit" class="btn btn-success">Add</button>
+            </form>
+        </div>
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Participants list</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-fw fa-user"></i> vitaliy.zurian@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
