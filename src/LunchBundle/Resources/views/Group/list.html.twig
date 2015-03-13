@@ -18,7 +18,7 @@
             {% for group in groups %}
                 <ul class="list-group">
                     {% for participant in group.participants %}
-                        <li class="list-group-item">{{ participant.email }}</li>
+                        <li class="list-group-item"><span class="badge">{{ participant.department }}</span>{{ participant.email }}</li>
                     {% endfor %}
                 </ul>
             {% endfor %}

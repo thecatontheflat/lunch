@@ -33,7 +33,7 @@
                     <div class="list-group">
                         {% for participant in participants %}
                             <a href="{{ url('participant_edit', {'id': participant.id}) }}" class="list-group-item">
-                                <i class="fa fa-fw fa-user"></i> {{ participant.email }}
+                                <span class="badge">{{ participant.department }}</span><i class="fa fa-fw fa-user"></i> {{ participant.email }}
                             </a>
                         {% endfor %}
                     </div>

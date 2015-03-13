@@ -14,21 +14,27 @@ class ParticipantType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('email')
-            ->add('department')
-            ->add('save', 'submit')
-        ;
+        $builder->add('email');
+        $builder->add('department', 'choice', [
+            'choices' => [
+                'IT' => 'IT',
+                'SALES' => 'SALES',
+                'OPS' => 'OPS'
+            ]
+        ]);
+        $builder->add('save', 'submit');
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'LunchBundle\Entity\Participant'
-        ));
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'LunchBundle\Entity\Participant'
+            )
+        );
     }
 
     /**

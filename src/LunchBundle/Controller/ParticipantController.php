@@ -51,6 +51,12 @@ class ParticipantController extends Controller
     {
         $form = $this->createForm(new ParticipantType(), $participant);
 
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            $this->getDoctrine()->getEntityManager()->persist($participant);
+            $this->getDoctrine()->getEntityManager()->flush();
+        }
+
         return $this->render(
             'LunchBundle:Participant:edit.html.twig', [
                 'participant' => $participant,
