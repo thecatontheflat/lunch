@@ -3,6 +3,7 @@
 namespace LunchBundle\Controller;
 
 use LunchBundle\Entity\Participant;
+use LunchBundle\Form\ParticipantType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -48,9 +49,13 @@ class ParticipantController extends Controller
 
     public function editAction(Request $request, Participant $participant)
     {
+        $form = $this->createForm(new ParticipantType(), $participant);
+
         return $this->render(
-            'LunchBundle:Participant:edit.html.twig',
-            ['participant' => $participant]
+            'LunchBundle:Participant:edit.html.twig', [
+                'participant' => $participant,
+                'form' => $form->createView()
+            ]
         );
     }
 
