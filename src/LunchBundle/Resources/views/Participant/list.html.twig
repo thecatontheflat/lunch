@@ -27,12 +27,12 @@
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Participants list (click to delete)</h3>
+                    <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Participants list</h3>
                 </div>
                 <div class="panel-body">
                     <div class="list-group">
                         {% for participant in participants %}
-                            <a href="{{ url('participant_delete', {'id': participant.id}) }}" class="list-group-item">
+                            <a href="{{ url('participant_edit', {'id': participant.id}) }}" class="list-group-item">
                                 <i class="fa fa-fw fa-user"></i> {{ participant.email }}
                             </a>
                         {% endfor %}

@@ -46,6 +46,14 @@ class ParticipantController extends Controller
         );
     }
 
+    public function editAction(Request $request, Participant $participant)
+    {
+        return $this->render(
+            'LunchBundle:Participant:edit.html.twig',
+            ['participant' => $participant]
+        );
+    }
+
     public function listAction(Request $request)
     {
         $participants = $this->getDoctrine()

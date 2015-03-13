@@ -10,6 +10,11 @@ participant_delete:
     path:     /participant/delete/{id}
     defaults: { _controller: LunchBundle:Participant:delete }
 
+participant_edit:
+    path:     /participant/edit/{id}
+    defaults: { _controller: LunchBundle:Participant:edit }
+
+
 participant_list:
     path:     /participant/list
     defaults: { _controller: LunchBundle:Participant:list }

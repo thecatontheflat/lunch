@@ -29,6 +29,13 @@ class Participant
     private $email;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="department", type="string", length=255)
+     */
+    private $department;
+
+    /**
      * @ORM\ManyToOne(targetEntity="LunchGroup", inversedBy="participants")
      * @ORM\JoinColumn(name="lunch_group_id", referencedColumnName="id", onDelete="SET NULL")
      */
@@ -89,5 +96,21 @@ class Participant
     public function getLunchGroup()
     {
         return $this->lunchGroup;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDepartment()
+    {
+        return $this->department;
+    }
+
+    /**
+     * @param string $department
+     */
+    public function setDepartment($department)
+    {
+        $this->department = $department;
     }
 }
