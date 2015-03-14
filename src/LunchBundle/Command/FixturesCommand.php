@@ -4,9 +4,7 @@ namespace LunchBundle\Command;
 
 use LunchBundle\Entity\Participant;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class FixturesCommand extends ContainerAwareCommand

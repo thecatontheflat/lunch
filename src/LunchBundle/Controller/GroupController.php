@@ -3,6 +3,7 @@
 namespace LunchBundle\Controller;
 
 use LunchBundle\Entity\LunchGroup;
+use LunchBundle\Generator\GroupGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class GroupController extends Controller
@@ -25,20 +26,11 @@ class GroupController extends Controller
             ->findAll();
 
         shuffle($participants);
-
-        $groups = array_chunk($participants, 4);
-        $lastGroup = end($groups);
-        if (count($lastGroup) < 3) {
-            $lastGroup = array_pop($groups);
-            $i = 0;
-            while ($lastGroup) {
-                array_push($groups[$i], array_pop($lastGroup));
-                $i++;
-            }
-        }
+        $shuffler = new GroupGenerator($participants, 4);
+        $distributedGroups = $shuffler->generateGroups();
 
 
-        foreach ($groups as $group) {
+        foreach ($distributedGroups as $group) {
             $lunchGroup = new LunchGroup();
             foreach ($group as $participant) {
                 $participant->setLunchGroup($lunchGroup);
@@ -48,6 +40,7 @@ class GroupController extends Controller
             }
         }
         $em->flush();
+
 
         return $this->redirectToRoute('group_list');
     }
