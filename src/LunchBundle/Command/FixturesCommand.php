@@ -23,7 +23,7 @@ class FixturesCommand extends ContainerAwareCommand
         $query->execute();
 
         $departments = ['IT', 'OPS', 'SALES', 'HR', 'MARKETING'];
-        for ($i = 0; $i < 25; $i++) {
+        for ($i = 0; $i < 123; $i++) {
             $participant = $this->generateParticipant($i, $departments[array_rand($departments)]);
             $em->persist($participant);
         }

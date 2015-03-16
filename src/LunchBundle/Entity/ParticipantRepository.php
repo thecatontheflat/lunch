@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class ParticipantRepository extends EntityRepository
 {
+    public function findAllOrdered()
+    {
+        $query = $this->createQueryBuilder('p')
+            ->addOrderBy('p.department', 'ASC')
+            ->addOrderBy('p.email', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

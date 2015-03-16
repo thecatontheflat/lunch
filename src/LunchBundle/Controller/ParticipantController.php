@@ -11,10 +11,10 @@ class ParticipantController extends Controller
 {
     public function createAction(Request $request)
     {
+        $form = $this->createForm(new ParticipantType());
         if ($request->isMethod('POST')) {
-            $participant = new Participant();
-            $participant->setEmail($request->get('email'));
-
+            $form->handleRequest($request);
+            $participant = $form->getData();
             $this->getDoctrine()->getEntityManager()->persist($participant);
             $this->getDoctrine()->getEntityManager()->flush();
 
@@ -69,12 +69,16 @@ class ParticipantController extends Controller
     {
         $participants = $this->getDoctrine()
             ->getRepository('LunchBundle:Participant')
-            ->findAll();
+            ->findAllOrdered();
+
+        $form = $this->createForm(new ParticipantType());
 
 
         return $this->render(
-            'LunchBundle:Participant:list.html.twig',
-            ['participants' => $participants]
+            'LunchBundle:Participant:list.html.twig', [
+                'participants' => $participants,
+                'form' => $form->createView()
+            ]
         );
     }
 

@@ -19,7 +19,8 @@ class ParticipantType extends AbstractType
             'choices' => [
                 'IT' => 'IT',
                 'SALES' => 'SALES',
-                'OPS' => 'OPS'
+                'OPS' => 'OPS',
+                'MARKETING' => 'MARKETING',
             ]
         ]);
         $builder->add('save', 'submit');
