@@ -2,6 +2,10 @@ dashboard:
     path:     /
     defaults: { _controller: LunchBundle:Dashboard:index }
 
+send_invites:
+    path:     /send-invites
+    defaults: { _controller: LunchBundle:Dashboard:sendInvites }
+
 participant_create:
     path:     /participant/create
     defaults: { _controller: LunchBundle:Participant:create }

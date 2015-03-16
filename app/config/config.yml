@@ -54,3 +54,10 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+hip_mandrill:
+    api_key: %mandrill_api_key%
+    disable_delivery: false
+    default:
+        sender: %mandrill_sender_email%
+        sender_name: %mandrill_sender_name%

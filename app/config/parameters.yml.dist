@@ -16,3 +16,6 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+    mandrill_api_key: xxx
+    mandrill_sender_email: a@b.c
+    mandrill_sender_name: John Doe
