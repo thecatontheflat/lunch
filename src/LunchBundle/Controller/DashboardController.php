@@ -50,7 +50,7 @@ class DashboardController extends Controller
                     ->setSubject('Blind Lunch')
                     ->setHtml($html);
                 $message->addTo($participant->getEmail());
-                $dispatcher->send($message);
+                $dispatcher->send($message, '', [], true);
             }
 
             $this->addFlash('success', 'Invitation emails were sent!');

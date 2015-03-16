@@ -15,6 +15,9 @@ class ParticipantType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('email');
+        $builder->add('isAttending', null, [
+            'required' => false
+        ]);
         $builder->add('department', 'choice', [
             'choices' => [
                 'IT' => 'IT',

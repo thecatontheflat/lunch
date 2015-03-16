@@ -40,7 +40,7 @@ class Participant
      *
      * @ORM\Column(name="is_attending", type="boolean")
      */
-    private $isAttending;
+    private $isAttending = true;
 
     /**
      * @ORM\ManyToOne(targetEntity="LunchGroup", inversedBy="participants")

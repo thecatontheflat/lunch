@@ -33,7 +33,7 @@ class ParticipantController extends Controller
             $this->getDoctrine()->getEntityManager()->remove($participant);
             $this->getDoctrine()->getEntityManager()->flush();
 
-            $request->getSession()->getFlashBag()->add(
+            $this->addFlash(
                 'success',
                 sprintf('Participant %s was removed!', $participant->getEmail())
             );
@@ -55,6 +55,10 @@ class ParticipantController extends Controller
             $form->handleRequest($request);
             $this->getDoctrine()->getEntityManager()->persist($participant);
             $this->getDoctrine()->getEntityManager()->flush();
+
+            $this->addFlash('success', sprintf('Participant %s was updated!', $participant->getEmail()));
+
+            return $this->redirectToRoute('participant_list');
         }
 
         return $this->render(
