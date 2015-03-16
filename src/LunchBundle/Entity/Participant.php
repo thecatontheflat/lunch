@@ -36,6 +36,13 @@ class Participant
     private $department;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_attending", type="boolean")
+     */
+    private $isAttending;
+
+    /**
      * @ORM\ManyToOne(targetEntity="LunchGroup", inversedBy="participants")
      * @ORM\JoinColumn(name="lunch_group_id", referencedColumnName="id", onDelete="SET NULL")
      */
@@ -112,5 +119,21 @@ class Participant
     public function setDepartment($department)
     {
         $this->department = $department;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIsAttending()
+    {
+        return $this->isAttending;
+    }
+
+    /**
+     * @param boolean $isAttending
+     */
+    public function setIsAttending($isAttending)
+    {
+        $this->isAttending = $isAttending;
     }
 }

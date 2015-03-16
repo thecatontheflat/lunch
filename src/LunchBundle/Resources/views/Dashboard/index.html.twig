@@ -10,6 +10,8 @@
         </div>
     </div>
 
+    {% include '@Lunch/Parts/flash.html.twig' %}
+
     <div class="row">
         <div class="col-lg-3 col-md-6">
             <div class="panel panel-primary">
@@ -43,7 +45,7 @@
                             <i class="fa fa-check fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">{{ participantsAmount }}</div>
+                            <div class="huge">{{ attendingParticipants }}</div>
                             <div>Attending</div>
                         </div>
                     </div>
