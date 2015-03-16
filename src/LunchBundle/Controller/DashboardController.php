@@ -29,23 +29,29 @@ class DashboardController extends Controller
 
     public function sendInvitesAction(Request $request)
     {
+        $this->getDoctrine()
+            ->getRepository('LunchBundle:Participant')
+            ->resetIsAttending();
+
         $dispatcher = $this->get('hip_mandrill.dispatcher');
         $participants = $this->getDoctrine()
             ->getRepository('LunchBundle:Participant')
-            ->findAttending();
+            ->findAll();
 
         $result = null;
         if ($participants) {
-            $message = new Message();
-            $message
-                ->setSubject('Blind Lunch')
-                ->setHtml('<html><body><h1>Some Content</h1></body></html>');
+            $html = $this->renderView('LunchBundle:Email:invitation.html.twig', [
+                'acceptLink' => '#'
+            ]);
 
             foreach ($participants as $participant) {
+                $message = new Message();
+                $message
+                    ->setSubject('Blind Lunch')
+                    ->setHtml($html);
                 $message->addTo($participant->getEmail());
+                $dispatcher->send($message);
             }
-
-            $dispatcher->send($message);
 
             $this->addFlash('success', 'Invitation emails were sent!');
         }

@@ -23,7 +23,7 @@ class GroupController extends Controller
 
         $participants = $this->getDoctrine()
             ->getRepository('LunchBundle:Participant')
-            ->findAll();
+            ->findAttending();
 
         shuffle($participants);
         $shuffler = new GroupGenerator($participants, 4);

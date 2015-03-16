@@ -37,4 +37,13 @@ class ParticipantRepository extends EntityRepository
 
         return $query->getResult();
     }
+
+    public function resetIsAttending()
+    {
+        $query = $this->getEntityManager()->createQuery(
+            'UPDATE LunchBundle:Participant p SET p.isAttending = :attending'
+        )->setParameter('attending', false);
+
+        $query->execute();
+    }
 }
