@@ -37,9 +37,11 @@ class DashboardController extends Controller
             ->getRepository('LunchBundle:Participant')
             ->findAll();
 
+        $rootPath = $this->get('kernel')->getRootDir();
         foreach ($participants as $participant) {
+            $cmd = $rootPath.'/console lunch:email:send '.$participant->getId().' > /dev/null &';
 
-            // send email to id
+            exec($cmd);
         }
 
         $this->addFlash('success', 'Invitation emails were sent!');
