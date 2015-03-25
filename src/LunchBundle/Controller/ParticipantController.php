@@ -15,8 +15,8 @@ class ParticipantController extends Controller
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             $participant = $form->getData();
-            $this->getDoctrine()->getEntityManager()->persist($participant);
-            $this->getDoctrine()->getEntityManager()->flush();
+            $this->getDoctrine()->getManager()->persist($participant);
+            $this->getDoctrine()->getManager()->flush();
 
             $request->getSession()->getFlashBag()->add(
                 'success',
@@ -30,8 +30,8 @@ class ParticipantController extends Controller
     public function deleteAction(Request $request, Participant $participant)
     {
         if ($request->isMethod('POST')) {
-            $this->getDoctrine()->getEntityManager()->remove($participant);
-            $this->getDoctrine()->getEntityManager()->flush();
+            $this->getDoctrine()->getManager()->remove($participant);
+            $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash(
                 'success',
@@ -53,8 +53,8 @@ class ParticipantController extends Controller
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
-            $this->getDoctrine()->getEntityManager()->persist($participant);
-            $this->getDoctrine()->getEntityManager()->flush();
+            $this->getDoctrine()->getManager()->persist($participant);
+            $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', sprintf('Participant %s was updated!', $participant->getEmail()));
 
@@ -84,6 +84,19 @@ class ParticipantController extends Controller
                 'form' => $form->createView()
             ]
         );
+    }
+    
+    public function confirmParticipationAction(Request $request, $id)
+    {
+        $participant = $this->getDoctrine()
+            ->getRepository('LunchBundle:Participant')
+            ->find($id);
+        
+        $participant->setIsAttending(true);
+        $this->getDoctrine()->getManager()->persist($participant);
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->render('LunchBundle:Email:thankyou.html.twig');
     }
 
 }

@@ -33,28 +33,16 @@ class DashboardController extends Controller
             ->getRepository('LunchBundle:Participant')
             ->resetIsAttending();
 
-        $dispatcher = $this->get('hip_mandrill.dispatcher');
         $participants = $this->getDoctrine()
             ->getRepository('LunchBundle:Participant')
             ->findAll();
 
-        $result = null;
-        if ($participants) {
-            $html = $this->renderView('LunchBundle:Email:invitation.html.twig', [
-                'acceptLink' => '#'
-            ]);
+        foreach ($participants as $participant) {
 
-            foreach ($participants as $participant) {
-                $message = new Message();
-                $message
-                    ->setSubject('Blind Lunch')
-                    ->setHtml($html);
-                $message->addTo($participant->getEmail());
-                $dispatcher->send($message, '', [], true);
-            }
-
-            $this->addFlash('success', 'Invitation emails were sent!');
+            // send email to id
         }
+
+        $this->addFlash('success', 'Invitation emails were sent!');
 
         return $this->redirectToRoute('dashboard');
     }

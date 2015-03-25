@@ -12,7 +12,7 @@ class FixturesCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('fixtures:load')
+            ->setName('lunch:fixtures:load')
             ->setDescription('Load fixtures');
     }
 

@@ -18,6 +18,9 @@ participant_edit:
     path:     /participant/edit/{id}
     defaults: { _controller: LunchBundle:Participant:edit }
 
+participant_confirm:
+    path:     /participant/confirm/{id}
+    defaults: { _controller: LunchBundle:Participant:confirmParticipation }
 
 participant_list:
     path:     /participant/list

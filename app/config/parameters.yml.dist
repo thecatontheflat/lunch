@@ -19,3 +19,5 @@ parameters:
     mandrill_api_key: xxx
     mandrill_sender_email: a@b.c
     mandrill_sender_name: John Doe
+
+    domain: http://yoursite.com
